@@ -105,12 +105,114 @@ namespace InventoryManager
         {
             using (var db = new DataContext())
             {
+                while (true)
+                {
+                    var item = db.InventoryItems.First(i => i.Id == itemId);
+                    WriteLine(
+                        "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                        "Manage Inventory Item: " + item.Name +
+                        "\n\nPlease select one of the following options" +
+                        "\n1. Update Name" +
+                        "\n2. Update Description" +
+                        "\n3. Update Vendor" +
+                        "\n4. Update Quantity In Stock" +
+                        "\n5. Update Order At Quantity" +
+                        "\n6. Update Last Order Date" +
+                        "\n7. Update Next Order Date" +
+                        "\n8. Update Order Price" +
+                        "\n9. Delete item"
+                    );
+                    int select = Int32.Parse(ReadLine());
+
+                    switch (select) 
+                    {
+                        case 1: 
+                            UpdateName(itemId);
+                            break;
+                        case 2: 
+                            UpdateDesc(itemId);
+                            break;
+                        case 3: 
+                            UpdateVendor(itemId);
+                            break;
+                        case 4: 
+                            UpdateOnHand(itemId);
+                            break;
+                        case 5: 
+                            UpdateOrderAt(itemId);
+                            break;
+                        case 6: 
+                            UpdateLastOrder(itemId);
+                            break;
+                        case 7: 
+                            UpdateNextOrder(itemId);
+                            break;
+                        case 8: 
+                            UpdateOrderPrice(itemId);
+                            break;
+                        case 9: 
+                            return;
+                    }
+                }
                 // var inventoryItem = from item in db.InventoryItems
                 //                     where item.Id == itemId
                 //                     select item;
+            }
+        }
+        static void UpdateName(int itemId)
+        {
+            using (var db = new DataContext())
+            {
                 var item = db.InventoryItems.First(i => i.Id == itemId);
-                WriteLine(item.Name);
-                ReadKey();
+            }
+        }
+        static void UpdateDesc(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateVendor(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateOnHand(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateOrderAt(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateLastOrder(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateNextOrder(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
+            }
+        }
+        static void UpdateOrderPrice(int itemId)
+        {
+            using (var db = new DataContext())
+            {
+                var item = db.InventoryItems.First(i => i.Id == itemId);
             }
         }
         static void InitiateDb()
