@@ -10,8 +10,8 @@ namespace InventoryManager
         {
             using (var db = new DataContext())
             {
-                db.Database.EnsureDeleted();
-                db.Database.EnsureCreated();
+                // db.Database.EnsureDeleted();
+                // db.Database.EnsureCreated();
 
                 Console.WriteLine("Inserting a new inventory item");
                 db.Add(new InventoryItem {

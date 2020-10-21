@@ -9,10 +9,10 @@ namespace InventoryManager
     {
         static void Main(string[] args)
         {
-            CreateDB db = new CreateDB();
+            // CreateDB db = new CreateDB();
             Manager manager = new Manager();
 
-            db.InitiateDb();
+            // db.InitiateDb();
             manager.MainMenu();
         }
     }
