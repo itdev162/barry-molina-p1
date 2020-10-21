@@ -67,6 +67,91 @@ namespace InventoryManager
         }
         static void AddInventoryItem()
         {
+            WriteLine(
+                "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                "Add Inventory Item" + 
+                "\n\n\nPress <enter> at any time to return to the Main Menu\n"
+            );
+            Write("\nEnter Name: ");
+            string name = ReadLine();
+
+            if (String.IsNullOrEmpty(name))
+            {
+                return;
+            }
+            Write("\nEnter Description: ");
+            string description = ReadLine();
+            if (String.IsNullOrEmpty(description))
+            {
+                return;
+            }
+
+            Write("\nEnter Vendor: ");
+            string vendor = ReadLine();
+            if (String.IsNullOrEmpty(vendor))
+            {
+                return;
+            }
+
+            Write("\nEnter Quantity On Hand: ");
+            string onHand = ReadLine();
+            if (String.IsNullOrEmpty(onHand))
+            {
+                return;
+            }
+            int qtyOnHand = Int32.Parse(onHand);
+
+            Write("\nEnter Order At Quantity: ");
+            string orderAt = ReadLine();
+            if (String.IsNullOrEmpty(orderAt))
+            {
+                return;
+            }
+            int qtyOrderAt = Int32.Parse(orderAt);
+
+            Write("\nEnter Last Order Date like mm/dd/yyy: ");
+            string lastOrder = ReadLine();
+            if (String.IsNullOrEmpty(lastOrder))
+            {
+                return;
+            }
+            DateTime lastOrderDate = DateTime.Parse(lastOrder);
+
+            Write("\nEnter Next Order Date like mm/dd/yyy: ");
+            string nextOrder = ReadLine();
+            if (String.IsNullOrEmpty(nextOrder))
+            {
+                return;
+            }
+            DateTime nextOrderDate = DateTime.Parse(nextOrder);
+
+            Write("\nEnter Order Price: ");
+            string price = ReadLine();
+            if (String.IsNullOrEmpty(price))
+            {
+                return;
+            }
+            decimal orderPrice = Decimal.Parse(price);
+
+            using (var db = new DataContext())
+            {
+                db.InventoryItems.Add(
+                    new InventoryItem
+                    {
+                        Name = name,
+                        Description = description,
+                        Vendor = vendor,
+                        QuantityOnHand = qtyOnHand,
+                        OrderAtQuantity = qtyOrderAt,
+                        LastOrderDate = lastOrderDate,
+                        NextOrderDate = nextOrderDate,
+                        OrderPrice = orderPrice
+                    }
+                );
+                db.SaveChanges();
+            }
+            Write("\n\nInventory item added. Press any key to return to return to the Main Menu");
+            ReadKey();
         }
         static void ViewInventory()
         {
@@ -202,7 +287,7 @@ namespace InventoryManager
                 {
                     item.Name = newName;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -223,7 +308,7 @@ namespace InventoryManager
                 {
                     item.Description = newDescription;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -244,7 +329,7 @@ namespace InventoryManager
                 {
                     item.Vendor = newVendor;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -266,7 +351,7 @@ namespace InventoryManager
                     int newQuantity = Int32.Parse(newOnHand);
                     item.QuantityOnHand = newQuantity;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -288,7 +373,7 @@ namespace InventoryManager
                     int newQuantity = Int32.Parse(newOrderAt);
                     item.OrderAtQuantity = newQuantity;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -310,7 +395,7 @@ namespace InventoryManager
                     DateTime newDate = DateTime.Parse(newLastOrder);
                     item.LastOrderDate = newDate;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -332,7 +417,7 @@ namespace InventoryManager
                     DateTime newDate = DateTime.Parse(newNextOrder);
                     item.NextOrderDate = newDate;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
@@ -354,7 +439,7 @@ namespace InventoryManager
                     decimal newQuantity = Decimal.Parse(newOrderPrice);
                     item.OrderPrice = newQuantity;
                     db.SaveChanges();
-                    Write("\nInventory item updtated. Press any key to return to Item Menu");
+                    Write("\nInventory item updated. Press any key to return to Item Menu");
                     ReadKey();
                 }
             }
